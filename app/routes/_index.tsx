@@ -1,8 +1,10 @@
 import { Button, Slider } from "@nextui-org/react";
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { Link } from "@remix-run/react";
 import { useCallback, useEffect, useState } from "react";
 import { usePiPWindow } from "~/PiP/PiPProvider";
 import PiPWindow from "~/PiP/PiPWindow";
+import { GithubIcon } from "~/icons/github";
 
 export const meta: MetaFunction = () => {
   return [
@@ -40,8 +42,7 @@ export default function Index() {
       <div className="w-full max-w-lg h-full flex flex-col justify-center items-start">
         <div className="text-3xl font-black">Blink More</div>
         <div className="text-lg font-black/50 mb-10">
-          Blinking more can help reduce eye strain and dryness. Start blinking
-          more with this simple tool.
+          A simple tool that nudges you to blink more often.
         </div>
         {isSupported ? (
           <div className="flex flex-col w-full justify-center items-center gap-5">
@@ -87,6 +88,13 @@ export default function Index() {
             recommend using the latest version of Chrome.
           </div>
         )}
+      </div>
+      <div className="w-full flex flex-row justify-center mt-20 fixed bottom-2">
+        <Link to="https://github.com/GoodluckH/blink-more" target="_blank">
+          <Button isIconOnly className="bg-white">
+            <GithubIcon height={24} width={24} viewBox="0 0 100 100" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
