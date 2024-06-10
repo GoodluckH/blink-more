@@ -5,6 +5,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { PiPProvider } from "./PiP/PiPProvider";
+import stylesheet from "~/tailwind.css?url";
+import { LinksFunction } from "@remix-run/cloudflare";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,5 +32,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <PiPProvider>
+      <Outlet />
+    </PiPProvider>
+  );
 }
